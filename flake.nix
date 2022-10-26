@@ -4,16 +4,23 @@
   outputs = { self }: {
     type = "worldFunction";
 
-    function = { zola, stdenv, kynvyrt }:
+    function = { lib, zola, stdenv, kynvyrt }:
 
       { name ? "unnamedWebsite", src }:
       let
+        indexContentString = builtins.readFile (src + /_index.md);
+        indexSplitStrings = lib.splitString "+++\n" indexContentString;
+        indexFrontMatter = builtins.elemAt indexSplitStrings 1;
+
+        matrixID = (builtins.fromTOML indexFrontMatter).matrixID;
+
         zolaConfig = {
           base_url = "https://example.com";
           compile_sass = true;
           build_search_index = true;
           markdown =
             { highlight_code = true; };
+          extra = { matrix.id = matrixID; };
         };
 
         zolaConfigTomlFile = kynvyrt {
