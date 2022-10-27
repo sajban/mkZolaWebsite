@@ -1,0 +1,37 @@
+.page-grid {
+        margin: auto;
+}
+
+.page-cell-header
+
+.page-cell-main {
+        max-width: 90vw;
+        margin: auto;
+}
+
+.page-cell-img {}
+
+.page-cell-footer {}
+
+  // Grid
+@media (min-width: $media-grid-start) {
+        .page-grid {
+                display: grid;
+                grid-template-columns: repeat(auto-fit, minmax(10em, 1fr));
+                grid-gap: 1em;
+                grid-template-areas: " hd hd hd hd hd " " mn mn mn mn mn ";
+        }
+
+
+  .page-cell-header {
+          grid-area: hd;
+  }
+
+  .page-cell-menu
+
+  .page-cell-main {
+          grid-area: mn;
+  }
+
+}
+

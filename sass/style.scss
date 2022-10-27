@@ -1,0 +1,54 @@
+// libraries
+@import "reseter.css/reseter";
+@import "_base16-theme.scss";
+
+@import "_variables.scss";
+@import "_page.scss";
+@import "_index.scss";
+@import "_content.scss";
+
+html {
+    min-height: 100%;
+    background: linear-gradient(120deg, $base00, $base01);
+    color: $base05;
+}
+
+body {
+    text-align: center;
+}
+
+h1 {
+    font-size: 10vw;
+}
+
+h2 {
+    font-size: 8vw;
+}
+
+h3 {
+    font-size: 6vw;
+}
+
+h4 {
+    font-size: 4vw;
+}
+
+h5 {
+    font-size: 3vw;
+}
+
+p {
+    font-size: 2vw;
+}
+
+
+.matrix-button {
+    text-align: center;
+    width: 100%;
+}
+
+svg {
+    width: 25vw;
+    height: 100%;
+    fill: $base04;
+}

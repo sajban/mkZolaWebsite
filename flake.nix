@@ -4,10 +4,12 @@
   outputs = { self }: {
     type = "worldFunction";
 
-    function = { lib, zola, stdenv, kynvyrt }:
+    function = { lib, zola, stdenv, kynvyrt, reseter-css, base16-styles }:
 
-      { name ? "unnamedWebsite", src }:
+      { name ? "unnamedWebsite", theme ? "google-light", src }:
       let
+        inherit (lib) concatMapStringsSep;
+
         indexContentString = builtins.readFile (src + /_index.md);
         indexSplitStrings = lib.splitString "+++\n" indexContentString;
         indexFrontMatter = builtins.elemAt indexSplitStrings 1;
@@ -29,6 +31,14 @@
           format = "toml";
         };
 
+        scssPackages = [ reseter-css ];
+
+        linkSassLibrary = package: ''
+          ln -s ${package}/lib/scss ./sass/${package.name}
+        '';
+
+        linkSassLibrariesShell = concatMapStringsSep "\n" linkSassLibrary scssPackages;
+
       in
       stdenv.mkDerivation {
         inherit name;
@@ -38,6 +48,8 @@
         nativeBuildInputs = [ zola ];
 
         buildPhase = ''
+          ${linkSassLibrariesShell}
+          ln -s ${base16-styles}/lib/scss/base16-${theme}.scss ./sass/_base16-theme.scss
           ln -s ${zolaConfigTomlFile} ./config.toml
           ln -s ${src} ./content
           zola build
