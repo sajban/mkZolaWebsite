@@ -1,37 +1,25 @@
-.page-grid {
-        margin: auto;
-}
-
-.page-cell-header
-
-.page-cell-main {
-        max-width: 90vw;
-        margin: auto;
-}
-
-.page-cell-img {}
-
-.page-cell-footer {}
-
-  // Grid
+// Grid
 @media (min-width: $media-grid-start) {
-        .page-grid {
-                display: grid;
-                grid-template-columns: repeat(auto-fit, minmax(10em, 1fr));
-                grid-gap: 1em;
-                grid-template-areas: " hd hd hd hd hd " " mn mn mn mn mn ";
-        }
+    #page-grid {
+        display: grid;
+        grid-template:
+	    "A A A" auto
+	    "C C C" auto
+            "C C C" auto;
+    }
 
 
-  .page-cell-header {
-          grid-area: hd;
-  }
+    #page-cell-header {
+        grid-area: A;
+    }
 
-  .page-cell-menu
+    #page-cell-menu {
+	grid-area: B;
+    }
 
-  .page-cell-main {
-          grid-area: mn;
-  }
+    #page-cell-main {
+        grid-area: C;
+    }
 
 }
 

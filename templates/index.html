@@ -1,15 +1,13 @@
 {% extends "base.html" %}
 
 {% block body %}
-  <div class="index-grid">
+  <div id="index-grid">
 
-    <div class="index-cell-header">
-      <h2>{{ section.title }}</h2>
-    </div>
+    <h2 id="index-cell-header">{{ section.title }}</h2>
 
-    <div class="index-cell-main">
+    <div id="index-cell-main">
 
-      <div class="content-grid">
+      <div id="content-grid">
         {{ section.content | safe }}
       </div>
     </div>

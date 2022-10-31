@@ -1,35 +1,28 @@
-.index-grid {
-        position: center;
-        width: 100vw;
-        max-width: 100vw;
-        min-width: 500px;
-        margin: auto;
+#index-grid {}
+
+#index-cell-header {
+    font-size: 7vw;
 }
 
-.index-cell-header {
-        margin: auto;
-}
+#index-cell-main {}
 
-.index-cell-main {
-        margin: auto;
-}
-
-.index-cell-img {}
-
-.index-cell-footer {}
-
-  // Grid
+// Grid
 @media (min-width: $media-grid-start) {
-        .index-grid {
-                display: grid;
-                grid-template-columns: repeat(auto-fit, minmax(10em, 1fr));
-                grid-gap: 5px;
-        }
+    #index-grid {
+        display: grid;
+        grid-template:
+	    "A A A" auto
+	    "C C C" auto
+            "C C C" auto;
+    }
 
-        .index-cell-header {}
+    #index-cell-header {
+	grid-area: A;
+	height: 100px;
+    }
 
-        .index-cell-menu {}
-
-        .index-cell-main {}
+    #index-cell-main {
+	grid-area: C;
+    }
 
 }

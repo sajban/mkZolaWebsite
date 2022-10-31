@@ -17,6 +17,7 @@
         matrixID = (builtins.fromTOML indexFrontMatter).matrixID;
 
         zolaConfig = {
+          title = name;
           base_url = "https://example.com";
           compile_sass = true;
           build_search_index = true;

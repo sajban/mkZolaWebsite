@@ -1,32 +1,3 @@
-.content-grid {
-        align-self: center;
-        display: grid;
-        max-width: 100%;
-        margin: auto;
+#content-grid {
+    display: grid;
 }
-
-.content-cell-header {}
-
-.content-cell-main {}
-
-.content-cell-landscape {}
-
-.content-cell-footer {}
-
-// media break
-@media (min-width: $media-grid-start) {
-        .content-grid {
-                display: grid;
-                grid-template-columns: repeat(auto-fit, minmax(10em, 1fr));
-                grid-gap: 1em;
-        }
-
-        .content-cell-landscape {}
-
-        .content-cell-header {}
-
-        .content-cell-menu {}
-
-        .content-cell-main {}
-}
-
