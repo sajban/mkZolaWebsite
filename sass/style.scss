@@ -8,52 +8,46 @@
 @import "_page.scss";
 @import "_index.scss";
 @import "_content.scss";
+@import "_footer.scss";
 
 html {
     min-height: 100%;
-    background: linear-gradient(120deg, $base00, $base01);
+    background: $base00;
     color: $base05;
 }
 
 body {
+    top-margin: 2vh;
     text-align: center;
 }
 
 h1 h2 h3 h4 h5 h6 { color: $base04; }
 
 h1 {
-    font-size: 5vw;
+    font-size: 4rem;
 }
 
 h2 {
-    font-size: 4vw;
+    font-size: 3rem;
 }
 
 h3 {
-    font-size: 3.5vw;
+    font-size: 2.5rem;
 }
 
 h4 {
-    font-size: 3vw;
+    font-size: 1.9rem;
 }
 
 h5 {
-    font-size: 2.5vw;
+    font-size: 1.5rem;
 }
 
 p {
-    font-size: 2vw;
+    font-size: 1.2rem;
 }
 
-
-.matrix-button {
-    text-align: center;
-    width: 100%;
+@media (max-width: 240px) {
+    html { font-size: 8px; }
     
-}
-
-.matrix-button svg {
-    width: 25vw;
-    height: 100%;
-    fill: $base04;
 }

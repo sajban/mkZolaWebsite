@@ -1,0 +1,14 @@
+footer {
+    display: grid;
+    grid-template:
+	". A .";
+}
+
+.matrix-button {
+    grid-area: A;
+}
+
+.matrix-button svg {
+    fill: $base05;
+    width: 30vw;
+}

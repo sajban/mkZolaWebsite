@@ -1,7 +1,8 @@
 #index-grid {}
 
 #index-cell-header {
-    font-size: 7vw;
+    margin-top: 2vh;
+    font-size: 5rem;
 }
 
 #index-cell-main {}
@@ -12,13 +13,11 @@
         display: grid;
         grid-template:
 	    "A A A" auto
-	    "C C C" auto
             "C C C" auto;
     }
 
     #index-cell-header {
 	grid-area: A;
-	height: 100px;
     }
 
     #index-cell-main {
