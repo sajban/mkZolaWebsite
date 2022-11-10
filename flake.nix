@@ -4,21 +4,25 @@
   outputs = { self }: {
     type = "worldFunction";
 
-    function = { lib, zola, stdenv, kynvyrt, reseter-css, base16-styles }:
+    function = { lib, zola, stdenv, kynvyrt, reseter-css, base16-styles, buttons }:
 
-      { name ? "unnamedWebsite", theme ? "google-light", src }:
+      mkZolaWebsiteInputs@{ name ? false, theme ? "google-light", src }:
       let
         inherit (lib) concatMapStringsSep;
 
+
         indexContentString = builtins.readFile (src + /_index.md);
         indexSplitStrings = lib.splitString "+++\n" indexContentString;
-        indexFrontMatter = builtins.elemAt indexSplitStrings 1;
 
-        matrixID = (builtins.fromTOML indexFrontMatter).matrixID;
+        indexFrontMatter = builtins.fromTOML (builtins.elemAt indexSplitStrings 1);
+
+        matrixID = indexFrontMatter.matrixID;
+
+        title = mkZolaWebsiteInputs.name or indexFrontMatter.title;
 
         zolaConfig = {
-          title = name;
-          base_url = "https://example.com";
+          inherit title;
+          base_url = "/";
           compile_sass = true;
           build_search_index = true;
           markdown =
@@ -32,7 +36,7 @@
           format = "toml";
         };
 
-        scssPackages = [ reseter-css ];
+        scssPackages = [ reseter-css buttons ];
 
         linkSassLibrary = package: ''
           ln -s ${package}/lib/scss ./sass/${package.name}
@@ -42,7 +46,7 @@
 
       in
       stdenv.mkDerivation {
-        inherit name;
+        name = title + "-zolaWebsite";
         version = src.shortRev or "unversioned";
         src = self;
 
